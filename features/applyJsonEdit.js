@@ -1,5 +1,6 @@
 import { setData } from "../store/dataStore.js";
 import { syncAll } from "../render/syncAll.js";
+import { isValidId, isValidValue } from "../utils/validate.js";
 
 export function applyJsonEdit() {
   try {
@@ -13,20 +14,26 @@ export function applyJsonEdit() {
     const isValidFormat = parsedData.every(
       (entry) =>
         typeof entry === "object" &&
-        typeof entry.id === "number" &&
-        typeof entry.value === "number"
+        isValidId(entry.id) &&
+        isValidValue(entry.value)
     );
-    if (!isValidFormat) throw new Error("유효한 JSON을 입력하세요.");
+    if (!isValidFormat) throw new Error("ID와 VALUE 형식이 올바르지 않습니다.");
 
     const idSet = new Set();
     const hasDuplicateId = parsedData.some((entry) => {
-      if (idSet.has(entry.id)) return true;
-      idSet.add(entry.id);
+      const normalizedId = String(entry.id).trim();
+      if (idSet.has(normalizedId)) return true;
+      idSet.add(normalizedId);
       return false;
     });
     if (hasDuplicateId) throw new Error("ID는 중복될 수 없습니다.");
 
-    setData(parsedData);
+    const normalizedData = parsedData.map((entry) => ({
+      id: String(entry.id).trim(),
+      value: entry.value,
+    }));
+
+    setData(normalizedData);
     syncAll();
   } catch (error) {
     if (error instanceof SyntaxError) {

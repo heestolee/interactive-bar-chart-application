@@ -1,19 +1,23 @@
 import { getData, setData } from "../store/dataStore.js";
 import { syncAll } from "../render/syncAll.js";
+import { isValidId, isValidValue } from "../utils/validate.js";
 
 export function addEntry() {
   const idInputEl = document.getElementById("id-input");
   const valueInputEl = document.getElementById("value-input");
-  const id = parseInt(idInputEl.value);
-  const value = parseInt(valueInputEl.value);
 
-  if (isNaN(id) || isNaN(value)) {
-    alert("숫자를 입력하세요.");
+  const idRaw = idInputEl.value;
+  const value = parseFloat(valueInputEl.value);
+
+  if (!isValidId(idRaw) || !isValidValue(value)) {
+    alert("유효한 ID와 숫자 값을 입력하세요.");
     return;
   }
 
+  const id = String(idRaw).trim();
   const currentData = getData();
-  if (currentData.some((entry) => entry.id === id)) {
+
+  if (currentData.some((entry) => String(entry.id) === id)) {
     alert("중복된 ID입니다.");
     return;
   }
