@@ -1,21 +1,6 @@
 import { getData, setData } from "./store/dataStore.js";
 import { syncAll } from "./render/syncAll.js";
-
-function applyTableChanges() {
-  const valueInputElements = document.querySelectorAll(
-    "#value-table tbody input"
-  );
-  const updatedData = getData().map((dataItem) => {
-    const matchedInputEl = [...valueInputElements].find(
-      (inputEl) => parseInt(inputEl.dataset.id) === dataItem.id
-    );
-    return matchedInputEl
-      ? { ...dataItem, value: parseInt(matchedInputEl.value) }
-      : dataItem;
-  });
-  setData(updatedData);
-  syncAll();
-}
+import { applyTableChanges } from "./features/applyTableChanges.js";
 
 function addEntry() {
   const idInputEl = document.getElementById("id-input");
