@@ -143,3 +143,36 @@ input::placeholder {
 .bar:hover {
   outline: 1px solid blue;
 }
+
+.add-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-form input {
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  flex: 1;
+  max-width: 120px;
+}
+
+.add-form input:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.add-form button {
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  background-color: white;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.add-form button:hover {
+  background-color: #f2f2f2;
+}
