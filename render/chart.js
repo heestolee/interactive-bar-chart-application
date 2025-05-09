@@ -11,12 +11,15 @@ export function renderChart() {
     return (Math.log(value + 1) / Math.log(rawMaxValue + 1)) * 100;
   };
 
-  currentData.forEach((dataItem) => {
+  currentData.forEach((dataItem, index) => {
     const barEl = document.createElement("div");
-    barEl.style.width = "30px";
+    barEl.className = "bar";
+    barEl.title = `ID: ${dataItem.id}\nVALUE: ${dataItem.value}`;
+
     barEl.style.height = `${getLogHeight(dataItem.value)}%`;
-    barEl.style.background = "lightgray";
-    barEl.title = `id: ${dataItem.id}, value: ${dataItem.value}`;
+
+    barEl.style.backgroundColor = index % 2 === 0 ? "#ccc" : "#eee";
+
     chartContainerEl.appendChild(barEl);
   });
 }

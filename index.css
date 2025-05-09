@@ -133,3 +133,13 @@ input::placeholder {
   resize: vertical;
   border: 1px solid #aaa;
 }
+
+.bar {
+  width: 30px;
+  cursor: pointer;
+  outline: none;
+}
+
+.bar:hover {
+  outline: 1px solid blue;
+}
