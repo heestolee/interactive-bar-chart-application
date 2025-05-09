@@ -92,6 +92,17 @@ function cleanJsonInput(jsonInput) {
 
 // ========== 4. 데이터 관리 로직 (76-87) ==========
 /**
+ * 초기 데이터 - 앱 시작 시 표시될 데이터
+ */
+const initialData = [
+  { id: "0", value: 75 },
+  { id: "1", value: 20 },
+  { id: "2", value: 80 },
+  { id: "3", value: 100 },
+  { id: "4", value: 70 },
+];
+
+/**
  * 애플리케이션 데이터 스토어
  * - 단일 데이터 소스 원칙을 따름
  */
@@ -325,6 +336,8 @@ function applyJsonEdit() {
  * 문서 로드 완료 시 초기화 및 이벤트 바인딩
  */
 document.addEventListener("DOMContentLoaded", () => {
+  setData(initialData);
+
   // 초기 UI 렌더링
   syncAll();
 
