@@ -1,11 +1,13 @@
 import { setData } from "../store/dataStore.js";
 import { syncAll } from "../render/syncAll.js";
 import { isValidId, isValidValue } from "../utils/validate.js";
+import { cleanJsonInput } from "../utils/cleanJsonInput.js";
 
 export function applyJsonEdit() {
   try {
     const jsonTextareaEl = document.getElementById("json-editor");
-    const parsedData = JSON.parse(jsonTextareaEl.value);
+    const cleanedJson = cleanJsonInput(jsonTextareaEl.value);
+    const parsedData = JSON.parse(cleanedJson);
 
     if (!Array.isArray(parsedData)) {
       throw new Error("JSON은 배열이어야 합니다.");
