@@ -7,41 +7,42 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h2>아이엠파인 SD팀 지원자 이창희</h2>
-
-    <section>
-      <h3>1. 그래프</h3>
-      <div id="chart-container"></div>
-    </section>
-
-    <section>
-      <h3>2. 값 편집</h3>
-      <table id="value-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>VALUE</th>
-            <th>삭제</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <button id="table-apply-button">Apply</button>
-    </section>
-
-    <section>
-      <h3>3. 값 추가</h3>
-      <input type="number" id="id-input" placeholder="ID" />
-      <input type="number" id="value-input" placeholder="VALUE" />
-      <button id="value-add-button">Add</button>
-    </section>
-
-    <section>
-      <h3>4. 값 고급 편집</h3>
-      <textarea id="json-editor" rows="10"></textarea><br />
-      <button id="json-apply-button">Apply</button>
-    </section>
-
+    <header>
+      <div class="applicant-name">아이엠파인 SD팀 지원자 이창희</div>
+    </header>
+    <main class="layout">
+      <div class="chart-panel">
+        <h3>1. 그래프</h3>
+        <div id="chart-container"></div>
+      </div>
+      <div class="control-panel">
+        <section>
+          <h3>2. 값 추가</h3>
+          <input type="number" id="id-input" placeholder="ID" />
+          <input type="number" id="value-input" placeholder="VALUE" />
+          <button id="value-add-button">Add</button>
+        </section>
+        <section>
+          <h3>3. 값 편집</h3>
+          <table id="value-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>VALUE</th>
+                <th>삭제</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <button id="table-apply-button">Apply</button>
+        </section>
+        <section>
+          <h3>4. 고급 편집</h3>
+          <textarea id="json-editor" rows="8"></textarea><br />
+          <button id="json-apply-button">Apply</button>
+        </section>
+      </div>
+    </main>
     <script type="module" src="main.js"></script>
   </body>
 </html>
