@@ -1,4 +1,5 @@
 import { getData, setData } from "../store/dataStore.js";
+import { syncAll } from "./syncAll.js";
 
 export function renderTableEditor() {
   const tableBodyEl = document.querySelector("#value-table tbody");
@@ -26,7 +27,7 @@ export function renderTableEditor() {
     deleteButtonEl.addEventListener("click", () => {
       const updated = getData().filter((entry) => entry.id !== dataItem.id);
       setData(updated);
-      renderTableEditor();
+      syncAll();
     });
     deleteCellEl.appendChild(deleteButtonEl);
     rowEl.appendChild(deleteCellEl);
