@@ -1,13 +1,5 @@
 import { getData, setData } from "./store/dataStore.js";
-import { renderChart } from "./render/chart.js";
-import { renderTableEditor } from "./render/tableEditor.js";
-import { renderJsonEditor } from "./render/jsonEditor.js";
-
-function syncAll() {
-  renderChart();
-  renderTableEditor();
-  renderJsonEditor();
-}
+import { syncAll } from "./render/syncAll.js";
 
 function applyTableChanges() {
   const valueInputElements = document.querySelectorAll(
