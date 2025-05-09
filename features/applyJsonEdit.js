@@ -20,7 +20,7 @@ export function applyJsonEdit() {
         isValidId(entry.id) &&
         isValidValue(entry.value)
     );
-    if (!isValidFormat) throw new Error(ERROR_MESSAGESINVALID_JSON_ENTRY);
+    if (!isValidFormat) throw new Error(ERROR_MESSAGES.INVALID_JSON_ENTRY);
 
     const idSet = new Set();
     const hasDuplicateId = parsedData.some((entry) => {
