@@ -1,16 +1,12 @@
 import { getData, setData } from "./store/dataStore.js";
 import { renderChart } from "./render/chart.js";
 import { renderTableEditor } from "./render/tableEditor.js";
-
-function renderJson() {
-  const jsonTextareaEl = document.getElementById("json-editor");
-  jsonTextareaEl.value = JSON.stringify(getData(), null, 2);
-}
+import { renderJsonEditor } from "./render/jsonEditor.js";
 
 function syncAll() {
   renderChart();
   renderTableEditor();
-  renderJson();
+  renderJsonEditor();
 }
 
 function applyTableChanges() {
