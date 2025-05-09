@@ -43,7 +43,19 @@ function applyJsonEdit() {
 
 document.addEventListener("DOMContentLoaded", () => {
   syncAll();
+
+  const idInputEl = document.getElementById("id-input");
+  const valueInputEl = document.getElementById("value-input");
+
   document.getElementById("value-add-button").onclick = addEntry;
   document.getElementById("table-apply-button").onclick = applyTableChanges;
   document.getElementById("json-apply-button").onclick = applyJsonEdit;
+
+  [idInputEl, valueInputEl].forEach((inputEl) => {
+    inputEl.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        addEntry();
+      }
+    });
+  });
 });

@@ -19,7 +19,9 @@ export function addEntry() {
   }
 
   setData([...currentData, { id, value }]);
+  syncAll();
+
   idInputEl.value = "";
   valueInputEl.value = "";
-  syncAll();
+  idInputEl.focus();
 }
