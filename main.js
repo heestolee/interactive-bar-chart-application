@@ -76,9 +76,13 @@ function cleanJsonInput(jsonInput) {
       }
 
       // 트레일링 쉼표 제거
-      if (letter === "," && /[\]}]/.test(nextLetter)) {
-        i++;
-        continue;
+      if (letter === ",") {
+        let j = i + 1;
+        while (j < jsonInput.length && /\s/.test(jsonInput[j])) j++;
+        if (jsonInput[j] === "]" || jsonInput[j] === "}") {
+          i++;
+          continue;
+        }
       }
     }
 
